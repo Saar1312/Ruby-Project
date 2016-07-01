@@ -11,6 +11,7 @@ require_relative "nodos.rb"
 #Arbol Binario
 ##################################################################################################
 class ArbolBinario
+  include BFS #--------> NUEVO <--------
   attr_accessor :valor
   attr_reader :izquierdo, :derecho
 	
@@ -21,7 +22,12 @@ class ArbolBinario
         @derecho = d
     end
 
-	#Metodo each
+    #Metodo get --------> NUEVO <--------
+    def get
+        return valor
+    end
+	
+    #Metodo each
     def each
         yield izquierdo unless @izquierdo == nil
         yield derecho unless @derecho == nil
@@ -37,6 +43,7 @@ end
 #Arbol Rosa
 ####################################################################################################
 class ArbolRosa
+  include BFS #--------> NUEVO <--------
   attr_accessor :valor
   attr_reader :hijos
 
@@ -44,6 +51,11 @@ class ArbolRosa
     def initialize v, *h
         @valor = v
         @hijos = h
+    end
+
+    #Metodo get --------> NUEVO <--------
+    def get
+        return valor
     end
 
     #Metodo each
@@ -57,7 +69,6 @@ class ArbolRosa
     def mutar(mutador)
     	@valor = @valor.mutar(mutador)
     end
-
 end
 
 ##############################################################################################
