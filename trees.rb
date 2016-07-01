@@ -22,10 +22,18 @@ class BinTree
         @derecho = d
     end
 
+#Metodo each
+    def each
+        yield izquierdo unless @izquierdo== nil
+        yield derecho unless @derecho == nil
+    end
+
 end
 
 h1 = BinTree.new("Perra")
 h2 = BinTree.new("Loca")
 arbol = BinTree.new("Sucia",h1,h2)
 puts "valor: #{arbol.valor}"
-puts "valor hijo i: #{arbol.izquierdo.valor}"
+arbol.each do |x|
+	puts "Hijo: #{x.valor}"
+end
