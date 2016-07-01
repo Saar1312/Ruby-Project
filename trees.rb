@@ -2,7 +2,7 @@
 #encoding: utf-8
 
 # Isaac Gonzalez : 11-10396
-# Samuel Arleo : 
+# Samuel Arleo : 10-10969
 
 require_relative "mod_bfs.rb"
 require_relative "mod_fold.rb"
@@ -68,9 +68,10 @@ h3 = ArbolRosa.new("Fea")
 h4 = ArbolRosa.new("Gafa")
 h5 = ArbolRosa.new("Tonta")
 arbol = ArbolRosa.new("Sucia",h1,h2,h3,h4,h5)
-arbol.valor = "Puerca"
+arbol.valor = ["hola",["que",4],["hace"]]
 puts "valor Padre: #{arbol.valor}"
 arbol.each do |x|
 	puts "valor Hijo: #{x.valor}"
 end
 arbol.mutar(Singular.new())
+puts "valor Padre mutado: #{arbol.valor}"
