@@ -12,6 +12,7 @@ require_relative "nodos.rb"
 ##################################################################################################
 class ArbolBinario
   include BFS #--------> NUEVO <--------
+  include DFS #--------> NUEVO <--------
   attr_accessor :valor
   attr_reader :izquierdo, :derecho
 	
@@ -39,6 +40,7 @@ end
 ####################################################################################################
 class ArbolRosa
   include BFS #--------> NUEVO <--------
+  include DFS #--------> NUEVO <--------
   attr_accessor :valor
   attr_reader :hijos
 
