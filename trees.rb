@@ -1,9 +1,9 @@
 #!/usr/bin/ruby
 #encoding: utf-8
 
-require_relative "mod_bfs.rb"
-require_relative "mod_fold.rb"
-require_relative "nodos.rb"
+#require_relative "mod_bfs.rb"
+#require_relative "mod_fold.rb"
+#require_relative "nodos.rb"
 
 
 class BinTree
@@ -21,7 +21,9 @@ class BinTree
         @izquierdo = i
         @derecho = d
     end
-
+    def get
+    	return valor
+    end
 #Metodo each
     def each
         yield izquierdo unless @izquierdo== nil
@@ -30,10 +32,9 @@ class BinTree
 
 end
 
+
+
 h1 = BinTree.new("Perra")
 h2 = BinTree.new("Loca")
 arbol = BinTree.new("Sucia",h1,h2)
-puts "valor: #{arbol.valor}"
-arbol.each do |x|
-	puts "Hijo: #{x.valor}"
-end
+puts "Valor #{arbol.get}"
