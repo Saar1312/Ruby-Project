@@ -21,11 +21,6 @@ class ArbolBinario
         @izquierdo = i
         @derecho = d
     end
-
-    #Metodo get --------> NUEVO <--------
-    def get
-        return valor
-    end
 	
     #Metodo each
     def each
@@ -53,11 +48,6 @@ class ArbolRosa
         @hijos = h
     end
 
-    #Metodo get --------> NUEVO <--------
-    def get
-        return valor
-    end
-
     #Metodo each
     def each
     	@hijos.each do |h|
@@ -72,17 +62,3 @@ class ArbolRosa
 end
 
 ##############################################################################################
-
-h1 = ArbolRosa.new("Perra")
-h2 = ArbolRosa.new("Loca")
-h3 = ArbolRosa.new("Fea")
-h4 = ArbolRosa.new("Gafa")
-h5 = ArbolRosa.new("Tonta")
-arbol = ArbolRosa.new("Sucia",h1,h2,h3,h4,h5)
-arbol.valor = ["hola",["que",4],["hace"]]
-puts "valor Padre: #{arbol.valor}"
-arbol.each do |x|
-	puts "valor Hijo: #{x.valor}"
-end
-arbol.mutar(Singular.new())
-puts "valor Padre mutado: #{arbol.valor}"

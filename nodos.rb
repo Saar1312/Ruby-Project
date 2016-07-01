@@ -42,7 +42,16 @@ end
 class Singular < Mutador
 
     def mutarFixnum(valor)
-        puts "Hola"
+        ult = Math.log10(valor).floor.downto(0).map { |x| (valor / 10**x) % 10 }
+
+        suma = 0
+        for i in (0..((ult.length)-2))
+            suma += ult[i]
+        end
+
+        suma = suma * ult[ult.length-1]
+
+        return suma
     end
 
     def mutarString(valor)
@@ -68,7 +77,16 @@ end
 class Uniforme < Mutador
 
     def mutarFixnum(valor)
-        puts "Hola"
+
+        suma = 0
+        z = Math.log10(valor).floor.downto(0).map { |x| (valor / 10**x) % 10 }
+        z.each do |x|
+            suma += x
+        end
+
+        promedio = suma / z.length
+
+        return promedio
     end
 
     def mutarString(valor)
@@ -91,7 +109,15 @@ end
 class Oscuro < Mutador
 
     def mutarFixnum(valor)
-        put "Hola"        
+        num = 0
+        aux = Math.log10(valor).floor.downto(0).map { |x| (valor / 10**x) % 10 }
+
+        aux= aux.partition { |x| x.odd? }
+        aux[0].each do |x|
+            num += x
+        end
+
+        return num       
     end
 
     def mutarString(valor)
@@ -109,7 +135,25 @@ class Oscuro < Mutador
     end
 
     def mutarArray(valor)
-        puts "Hola"
+
+        z = valor.flatten
+        z1 = []
+        zr = []
+        tam = valor.length*0.5
+
+        for x in 0 ..(tam -1)
+            zr << Random.rand(0..(z.length -1))
+        end
+
+        for x in 0..(zr.length -1)
+            count = zr[x]
+            z1 << z[count].tipo_instancia(Oscuro.new())
+        end
+
+        d = z.reject{ |x| z1.include? x }
+
+
+        return (z1 << d).flatten!
     end
 
 end
