@@ -11,6 +11,7 @@ require_relative "nodos.rb"
 #Arbol Binario
 ##################################################################################################
 class ArbolBinario
+  include BFS #--------> NUEVO <--------
   attr_accessor :valor
   attr_reader :izquierdo, :derecho
 	
@@ -21,7 +22,12 @@ class ArbolBinario
         @derecho = d
     end
 
-	#Metodo each
+    #Metodo get --------> NUEVO <--------
+    def get
+        return valor
+    end
+	
+    #Metodo each
     def each
         yield izquierdo unless @izquierdo == nil
         yield derecho unless @derecho == nil
