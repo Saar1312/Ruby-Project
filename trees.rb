@@ -37,6 +37,7 @@ end
 #Arbol Rosa
 ####################################################################################################
 class ArbolRosa
+  include BFS #--------> NUEVO <--------
   attr_accessor :valor
   attr_reader :hijos
 
@@ -44,6 +45,11 @@ class ArbolRosa
     def initialize v, *h
         @valor = v
         @hijos = h
+    end
+
+    #Metodo get --------> NUEVO <--------
+    def get
+        return valor
     end
 
     #Metodo each
@@ -57,7 +63,6 @@ class ArbolRosa
     def mutar(mutador)
     	@valor = @valor.mutar(mutador)
     end
-
 end
 
 ##############################################################################################
