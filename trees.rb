@@ -11,8 +11,8 @@ require_relative "nodos.rb"
 #Arbol Binario
 ##################################################################################################
 class ArbolBinario
-  include BFS #--------> NUEVO <--------
-  include DFS #--------> NUEVO <--------
+  include BFS 
+  include FOLD 
   attr_accessor :valor
   attr_reader :izquierdo, :derecho
 	
@@ -31,6 +31,7 @@ class ArbolBinario
 
 	#Metodo Mutar Valor
     def mutar(mutador)
+      puts "#{mutador.class}"
     	@valor = @valor.mutar(mutador)
     end
 
@@ -39,8 +40,8 @@ end
 #Arbol Rosa
 ####################################################################################################
 class ArbolRosa
-  include BFS #--------> NUEVO <--------
-  include DFS #--------> NUEVO <--------
+  include BFS
+  include FOLD
   attr_accessor :valor
   attr_reader :hijos
 

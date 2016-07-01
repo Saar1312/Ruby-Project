@@ -13,11 +13,10 @@ module FOLD
 	def dfs
 		s = Array.new
 		s.push(self)
-		yield(self)
 		while !s.empty? #Quitar el ? hace falta?
 			elem = s.pop
+			yield(elem)
 			elem.each do |x|
-				yield(x)
 				s.push(x)
 			end
 		end
@@ -25,10 +24,15 @@ module FOLD
 
 	#Realiza fold sobre los nodos del arbol en el orden dado por el DFS
 	def fold(val)
-		acum = Array.new
+		temp = val
 		self.dfs do |x|
-			acum.push(x)
-			yield(x,acum)
+			val = yield(x,temp)
+			temp = val
 		end
+		puts "#{val}"
 	end
 end
+
+#predicado = lambda{|x| x == "arbol" || x=="h1"}
+#puts "Res #{arbol2.recoger(&predicado)}"
+
